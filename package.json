@@ -18,9 +18,11 @@
     "graphql": "^14.0.2",
     "graphql-tag": "^2.9.2",
     "iview": "^3.1.1",
+    "lodash": "^4.17.11",
     "material-color-hash": "^0.1.4",
     "register-service-worker": "^1.0.0",
     "tinycolor2": "^1.4.1",
+    "viser-vue": "^2.3.2",
     "vue": "^2.5.17",
     "vue-apollo": "^3.0.0-beta.25",
     "vue-i18n": "^8.1.0",
@@ -38,9 +40,11 @@
     "@vue/test-utils": "^1.0.0-beta.20",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.0.1",
+    "babel-plugin-import": "^1.9.1",
     "lint-staged": "^7.2.2",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
+    "vue-cli-plugin-iview": "^1.0.6",
     "vue-template-compiler": "^2.5.17"
   },
   "gitHooks": {
