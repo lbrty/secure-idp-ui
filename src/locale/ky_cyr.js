@@ -1,0 +1,2 @@
+// Kyrgyz Cyrillic
+export default {};

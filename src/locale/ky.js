@@ -1,0 +1,2 @@
+// Kyrgyz latin
+export default {};
