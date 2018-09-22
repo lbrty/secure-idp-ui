@@ -52,6 +52,7 @@
 
 <script>
 import City from "@/components/City.vue";
+import { mapActions } from "vuex";
 
 export default {
   name: "Login",
@@ -73,7 +74,11 @@ export default {
   },
 
   methods: {
-    onSubmit() {}
+    onSubmit() {
+      this.login(this.loginInfo);
+    },
+
+    ...mapActions(["login"])
   },
 
   mounted() {
