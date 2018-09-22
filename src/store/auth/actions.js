@@ -3,8 +3,12 @@ import { login } from "./action-types";
 import { apolloClient } from "@/apollo";
 
 export default {
-  [login]: async ({ commit }) => {
-    const { data } = await apolloClient.query({ query: tokenAuth });
+  [login]: async ({ commit }, payload) => {
+    const { data } = await apolloClient.matate({
+      mutation: tokenAuth,
+      variables: payload
+    });
+
     commit("saveToken", { tokenInfo: data.tokenAuth });
   }
 };

@@ -1,5 +1,4 @@
 <template lang="html">
-
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 3519.26 2123"><defs><linearGradient id="linear-gradient" x1="5997.05" y1="1855.1" x2="3688.02" y2="1855.1" gradientTransform="matrix(-1, -0.02, -0.02, 1, 6779.53, -689.11)" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#520ec9"/>
       <stop offset="0.07" stop-color="#6211c0"/>
@@ -1034,9 +1033,7 @@
 </template>
 
 <script>
-export default {
-
-}
+export default {}
 </script>
 
 <style lang="css" scoped>
