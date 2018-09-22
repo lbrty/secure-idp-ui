@@ -1,8 +1,6 @@
 import Vue from "vue";
 import VueI18n from "vue-i18n";
-
 import { locale } from "iview";
-
 import { EN, L_KEY, messages } from "@/locale/config";
 
 Vue.use(VueI18n);
