@@ -7,6 +7,7 @@
       method="post"
       @submit.native.prevent="onSubmit"
       :model="loginInfo"
+      :rules="rules"
       class="login__form">
 
       <FormItem prop="email">
@@ -51,8 +52,9 @@
 </template>
 
 <script>
-import City from "@/components/City.vue";
 import { mapActions } from "vuex";
+import loginValidator from "@/forms/rules/login";
+import City from "@/components/City.vue";
 
 export default {
   name: "Login",
@@ -65,6 +67,7 @@ export default {
         code: ""
       },
 
+      rules: loginValidator,
       showCodeInput: false
     };
   },
@@ -100,17 +103,13 @@ export default {
 
 <style scoped lang="sass">
 .login
-  width: 28vw
   background: rgba(255, 255, 255, 0.88)
-  border-radius: 0.2em
-  margin: 18em auto
-  padding: 1em
 
   &__form
     position: fixed
     top: 16em
-    left: 20em
-    width: 18vw
+    left: 18em
+    width: 26vw
     background: #fff
     border-radius: 0.2em
     border: 1px solid #eee
