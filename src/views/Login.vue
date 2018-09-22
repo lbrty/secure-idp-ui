@@ -25,6 +25,18 @@
           v-model="loginInfo.password"/>
       </FormItem>
 
+      <FormItem
+        v-if="showCodeInput"
+        prop="code">
+
+        <Input
+          :placeholder="$t('login.code')"
+          type="text"
+          size="large"
+          v-model="loginInfo.code"/>
+
+      </FormItem>
+
       <Button
         type="primary"
         html-type="submit"
@@ -48,8 +60,11 @@ export default {
     return {
       loginInfo: {
         email: "",
-        password: ""
-      }
+        password: "",
+        code: ""
+      },
+
+      showCodeInput: false
     };
   },
 
@@ -92,7 +107,8 @@ export default {
     left: 20em
     width: 18vw
     background: #fff
-    border-radius: 0.2em;
+    border-radius: 0.2em
+    border: 1px solid #eee
     box-shadow: 0 0 0.5em #ddd
     padding: 1em
 
