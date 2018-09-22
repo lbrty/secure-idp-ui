@@ -1,13 +1,11 @@
 import { mount, createLocalVue } from "@vue/test-utils";
 import Vuex from "vuex";
-import iView from "iview/dist/iview.min";
 
 import i18n from "@/locale";
 import Login from "@/views/Login.vue";
 
 const localVue = createLocalVue();
 
-localVue.use(iView);
 localVue.use(Vuex);
 
 describe("Login.vue", () => {
