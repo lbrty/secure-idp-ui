@@ -14,3 +14,7 @@
 @import "./assets/css/animate.css";
 @import "../node_modules/iview/dist/styles/iview.css";
 </style>
+
+<style lang="sass">
+@import "./assets/sass/app"
+</style>
