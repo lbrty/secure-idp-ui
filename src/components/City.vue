@@ -1040,7 +1040,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.nube1 {
+/* .nube1 {
   transform: translate(-100px);
   animation: moveNube1 15s ease-out infinite
 }
@@ -1084,7 +1084,7 @@ export default {
     transform: translate(100px);
 
   }
-}
+} */
 .cls-1 {
   fill: #cecece;
 }
