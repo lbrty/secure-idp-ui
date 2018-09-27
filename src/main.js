@@ -9,11 +9,10 @@ import apolloProvider from "./apollo";
 import i18n from "./locale";
 import "./registerServiceWorker";
 
+Vue.use(Viser);
 Vue.use(iView, {
   transfer: true
 });
-
-Vue.use(Viser);
 
 Vue.config.productionTip = false;
 
