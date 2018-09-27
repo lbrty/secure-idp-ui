@@ -4,9 +4,9 @@ export default {
   isAuthenticated: () => localStorage.getItem("token") !== null,
   isAdmin({ user }) {
     const anonymous = {
-      is_superuser: false
+      isSuperuser: false
     };
 
-    return (user || anonymous).is_superuser;
+    return (user || anonymous).isSuperuser;
   }
 };

@@ -1,8 +1,11 @@
-import { setToken } from "./mutation-types";
+import { setToken, setUser } from "./mutation-types";
 
 export default {
-  [setToken](state, { tokenInfo }) {
-    state.token = tokenInfo.token;
-    localStorage.setItem("token", tokenInfo.token);
+  [setToken](state, { token }) {
+    state.token = token;
+  },
+
+  [setUser](state, { user }) {
+    state.user = user;
   }
 };

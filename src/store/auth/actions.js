@@ -1,9 +1,9 @@
-import tokenAuth from "./queries/login.gql";
-import { login } from "./action-types";
 import { apolloClient } from "@/apollo";
-import { setToken } from "./mutation-types";
+import { checkToken, login } from "./action-types";
+import { setToken, setUser } from "./mutation-types";
 import { setCookies } from "@/helpers/browser";
 import router from "@/router";
+import tokenAuth from "./queries/login.gql";
 
 export default {
   [login]: async ({ commit }, payload) => {
@@ -12,8 +12,29 @@ export default {
       variables: payload
     });
 
-    commit(setToken, { tokenInfo: data.tokenAuth });
-    setCookies(data.tokenAuth);
+    // Commit initial user info
+    const { token, user } = data.tokenAuth;
+    commit(setToken, { token });
+    commit(setUser, { user });
+
+    // Setup session for user and
+    // redirect to homepage
+    setCookies(token);
+    localStorage.setItem("token", token);
     router.push({ name: "home" });
+  },
+
+  /*
+   * Check if token exists in ``localStorage``
+   * and if it exists then copy it into state
+   */
+  [checkToken]({ commit }) {
+    if (!localStorage.getItem("token")) {
+      // TODO:
+      // if no token
+      // then verify token
+      // if invalid token
+      // then redirect to login page
+    }
   }
 };

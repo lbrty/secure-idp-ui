@@ -1,5 +1,32 @@
 mutation TokenAuth($email: String!, $password: String!) {
   tokenAuth(email: $email, password: $password) {
     token
+    user {
+      id
+      email
+      firstName
+      lastName
+      isConsultant
+      isSuperuser
+      isStaff
+
+      permissions {
+        canRead
+        canCreate
+        canEdit
+        canDelete
+        viewContact
+        viewPersonal
+        viewDocuments
+
+        projectInfo {
+          id
+          projectName
+        }
+      }
+      office {
+        title
+      }
+    }
   }
 }
