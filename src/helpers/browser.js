@@ -1,3 +1,5 @@
+import { DOMAIN } from "@/config";
+
 /*
  * https://developer.mozilla.org/en-US/docs/Web/API/Navigation_timing_API
  * PerformanceNavigation.type Read only
@@ -55,4 +57,15 @@ export function transformQueryParams(params) {
   });
 
   return result;
+}
+
+/*
+ * Set application specific cookies
+ * ``jwt_token`` is also used by resty
+ * to verify permissions to access cetain
+ * documents which were uploaded for IDP.
+ */
+export function setCookies(token) {
+  document.cookie = `jwt_token=${token};domain=${DOMAIN}`;
+  document.cookie = `jwt_token=${token};domain=.${DOMAIN}`;
 }
