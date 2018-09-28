@@ -1,7 +1,7 @@
 import { apolloClient } from "@/apollo";
 import { setCookies } from "@/helpers/browser";
 import router from "@/router";
-import { toLoginPage, checkIn } from "@/router/util";
+import { toLoginPage, mayBeCheckIn } from "@/router/util";
 import { checkToken, login } from "./action-types";
 import { setUser } from "./mutation-types";
 import tokenAuth from "./queries/login.gql";
@@ -38,7 +38,7 @@ export default {
           mutation: verifyToken,
           variables: { token }
         })
-        .then(checkIn) // Update check-in time
+        .then(mayBeCheckIn) // Update check-in time
         .catch(_ => {
           // If invalid token
           // Then redirect to login page

@@ -1,10 +1,8 @@
 import { timestamp } from "@/helpers/dates";
-
 export const isLoginPage = route => String(route).toLowerCase() === "login";
 
 // We will check token every 15 minutes
-// Since it is Javascript we need to multiply by 1000
-export const CHECK_IN_EXPIRES = 15 * 60 * 1000 * 1000;
+export const CHECK_IN_EXPIRES = 15 * 60;
 
 export const getToken = () => localStorage.getItem("token");
 
@@ -14,10 +12,19 @@ export const checkIn = () => {
   return ts;
 };
 
+export const mayBeCheckIn = () => {
+  if (checkInExpired()) {
+    console.info("Time to check-in…");
+    checkIn();
+  }
+};
+
 export const checkInExpired = () => {
   const oldTimestamp = localStorage.getItem("checkin");
+
   if (oldTimestamp) {
-    return timestamp() - +oldTimestamp < CHECK_IN_EXPIRES;
+    const diff = Math.abs(+oldTimestamp - timestamp()) / 1000;
+    return diff > CHECK_IN_EXPIRES;
   }
 
   return true;
@@ -25,5 +32,6 @@ export const checkInExpired = () => {
 
 export const toLoginPage = router => {
   localStorage.removeItem("token");
+  localStorage.removeItem("checkin");
   router.push({ name: "login" });
 };
