@@ -7,12 +7,16 @@ import router from "./router";
 import store from "./store";
 import apolloProvider from "./apollo";
 import i18n from "./locale";
+import registerComponents from "./components/register";
+
 import "./registerServiceWorker";
 
 Vue.use(Viser);
 Vue.use(iView, {
   transfer: true
 });
+
+registerComponents();
 
 Vue.config.productionTip = false;
 
