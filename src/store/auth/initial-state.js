@@ -1,5 +1,4 @@
 export default {
-  token: null,
   user: {
     id: "user-1",
     isSuperuser: false,

@@ -1,9 +1,11 @@
 import { apolloClient } from "@/apollo";
-import { checkToken, login } from "./action-types";
-import { setToken, setUser } from "./mutation-types";
 import { setCookies } from "@/helpers/browser";
 import router from "@/router";
+import { toLoginPage, checkIn } from "@/router/util";
+import { checkToken, login } from "./action-types";
+import { setUser } from "./mutation-types";
 import tokenAuth from "./queries/login.gql";
+import verifyToken from "./queries/verify-token.gql";
 
 export default {
   [login]: async ({ commit }, payload) => {
@@ -14,7 +16,6 @@ export default {
 
     // Commit initial user info
     const { token, user } = data.tokenAuth;
-    commit(setToken, { token });
     commit(setUser, { user });
 
     // Setup session for user and
@@ -25,16 +26,33 @@ export default {
   },
 
   /*
-   * Check if token exists in ``localStorage``
-   * and if it exists then copy it into state
+   * Verify token and redirect to login page
+   * if it is invalid and cleanup localStorage
    */
-  [checkToken]({ commit }) {
-    if (!localStorage.getItem("token")) {
-      // TODO:
-      // if no token
-      // then verify token
-      // if invalid token
-      // then redirect to login page
+  [checkToken]: (_, { token, isLoginPage }) => {
+    if (token) {
+      // If token exists
+      // Then verify token
+      apolloClient
+        .mutate({
+          mutation: verifyToken,
+          variables: { token }
+        })
+        .then(checkIn) // Update check-in time
+        .catch(_ => {
+          // If invalid token
+          // Then redirect to login page
+          if (!isLoginPage) {
+            toLoginPage(router);
+          }
+        });
+    } else {
+      // If no token
+      // Then cleanup storage
+      // And redirect to login page
+      if (!isLoginPage) {
+        toLoginPage(router);
+      }
     }
   }
 };
