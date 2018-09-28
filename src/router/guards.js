@@ -1,11 +1,11 @@
 import { LoadingBar } from "iview";
 import { browserOnLoad, browserReloaded } from "@/helpers/browser";
-
-const isLoginPage = route => String(route).toLowerCase() === "login";
+import { isLoginPage, getToken, checkInExpired } from "./util";
+import store from "@/store";
+import { checkToken } from "@/store/auth/action-types";
 
 export const routerBefore = (to, from, next) => {
-  const token = localStorage.getItem("token");
-
+  const token = getToken();
   LoadingBar.start();
 
   if (token) {
@@ -14,7 +14,12 @@ export const routerBefore = (to, from, next) => {
     // Check token info only if current route is not /login
     // and only if browser was reloaded or link was opened
     if (!isLoginPage(to.name) && loadOrReload) {
-      console.log("check auth...");
+      if (checkInExpired()) {
+        store.dispatch(checkToken, {
+          token,
+          isLoginPage: isLoginPage(to.name)
+        });
+      }
     }
 
     next();
