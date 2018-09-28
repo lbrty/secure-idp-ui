@@ -32,3 +32,5 @@ export function dateDisplay(date) {
 
   return format(newDate, "DD.MM.YYYY");
 }
+
+export const timestamp = () => new Date().getTime();
