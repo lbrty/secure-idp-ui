@@ -15,4 +15,9 @@ describe("Bootstrap.vue", () => {
 
     expect(boo).toHaveBeenCalled();
   });
+
+  it("renders spinner if state is loading", () => {
+    const wrapper = shallowMount(Bootstrap, { localVue });
+    expect(wrapper.find("spin-stub").exists()).toBe(true);
+  });
 });
