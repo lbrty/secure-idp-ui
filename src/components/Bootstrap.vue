@@ -1,6 +1,6 @@
 <template>
-  <Spin v-if="loading" fix>
-    <Icon type="ios-loading" size="26" class="spin-icon"></Icon>
+  <Spin v-if="loading" fix class="bootstrap">
+    <Icon type="ios-loading" size="26" class="bootstrap__spin-icon"></Icon>
     <div class="loading-text">Loading…</div>
   </Spin>
   <div v-else>
@@ -36,11 +36,16 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.spin-icon
-  animation: spin 1s linear infinite
+.bootstrap
+  background: #4e5158
+
+  &__spin-icon
+    color: #fff
+    animation: spin 1s linear infinite
 
 .loading-text
-  font-size: 1.52em
+  color: #fff
+  font-size: 1.22em
   font-weight: 400
   margin-left: 1em
 
