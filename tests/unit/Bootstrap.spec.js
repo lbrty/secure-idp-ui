@@ -20,4 +20,10 @@ describe("Bootstrap.vue", () => {
     const wrapper = shallowMount(Bootstrap, { localVue });
     expect(wrapper.find("spin-stub").exists()).toBe(true);
   });
+
+  it("renders default slot when loading finished", () => {
+    const wrapper = shallowMount(Bootstrap, { localVue });
+    wrapper.setData({ loading: false });
+    expect(wrapper.find("spin-stub").exists()).toBe(false);
+  });
 });
