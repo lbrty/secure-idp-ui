@@ -10,6 +10,7 @@
 
 <script>
 import { getToken } from "@/router/util";
+import { mapActions } from "vuex";
 
 export default {
   name: "bootstrap",
@@ -23,11 +24,15 @@ export default {
   methods: {
     bootstrap() {
       if (getToken()) {
-        // TODO
+        this.init(() => {
+          this.loading = false;
+        });
       } else {
         this.loading = false;
       }
-    }
+    },
+
+    ...mapActions("init", ["init"])
   },
 
   watch: {
