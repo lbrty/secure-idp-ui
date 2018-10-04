@@ -1,0 +1,13 @@
+query Bootstrap {
+  # List of visible projects
+  projects
+
+  # IDP related
+  vulnerabilityCategories
+  ageCategories
+  settlerStatuses
+
+  # Aid/help
+  aidSpheres
+  aidAges
+}
