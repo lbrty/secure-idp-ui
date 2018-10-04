@@ -12,6 +12,8 @@
 import { getToken } from "@/router/util";
 
 export default {
+  name: "bootstrap",
+
   data() {
     return {
       loading: true
@@ -22,6 +24,8 @@ export default {
     bootstrap() {
       if (getToken()) {
         // TODO
+      } else {
+        this.loading = false;
       }
     }
   },
