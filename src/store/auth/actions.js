@@ -16,7 +16,5 @@ export default {
    * Verify token and redirect to login page
    * if it is invalid and cleanup localStorage
    */
-  [checkToken]: (_, payload) => {
-    verifyToken(payload);
-  }
+  [checkToken]: (_, payload) => verifyToken(payload)
 };
