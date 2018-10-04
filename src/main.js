@@ -7,6 +7,7 @@ import router from "./router";
 import store from "./store";
 import apolloProvider from "./apollo";
 import i18n from "./locale";
+import { handleError } from "./helpers/errorHandler";
 import registerComponents from "./components/register";
 
 import "./registerServiceWorker";
@@ -18,6 +19,7 @@ Vue.use(iView, {
 
 registerComponents();
 
+Vue.config.errorHandler = handleError;
 Vue.config.productionTip = false;
 
 new Vue({
