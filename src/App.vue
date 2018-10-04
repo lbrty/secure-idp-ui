@@ -1,8 +1,10 @@
 <template>
   <div id="app">
-    <bootstrap>
-      <router-view></router-view>
-    </bootstrap>
+    <ErrorBoundary>
+      <bootstrap>
+        <router-view></router-view>
+      </bootstrap>
+    </ErrorBoundary>
   </div>
 </template>
 
