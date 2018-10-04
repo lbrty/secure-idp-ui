@@ -15,7 +15,7 @@ export const routerBefore = (to, from, next) => {
     // and only if browser was reloaded or link was opened
     if (!isLoginPage(to.name) && loadOrReload) {
       if (checkInExpired()) {
-        store.dispatch(checkToken, {
+        store.dispatch(`auth/${checkToken}`, {
           token,
           isLoginPage: isLoginPage(to.name)
         });
