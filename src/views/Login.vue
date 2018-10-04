@@ -78,10 +78,27 @@ export default {
 
   methods: {
     onSubmit() {
-      this.login(this.loginInfo);
+      this.$refs["loginInfo"].validate(valid => {
+        if (valid) {
+          this.login({
+            loginInfo: this.loginInfo,
+            cb: this.handleLogin
+          });
+        } else {
+          this.$Message.error(this.$t("login.invalidLogin"));
+        }
+      });
     },
 
-    ...mapActions(["login"])
+    handleLogin(response, err) {
+      if (!err) {
+        this.$router.push({ name: "home" });
+      } else {
+        this.$Message.error(err.message);
+      }
+    },
+
+    ...mapActions("auth", ["login"])
   },
 
   mounted() {
