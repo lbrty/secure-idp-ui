@@ -1,13 +1,35 @@
-query Bootstrap {
-  # List of visible projects
-  projects
+query Bootstrap($uid: Int!) {
+  # Projects for current user
+  projects(uid: $uid) {
+    id
+    projectName
+  }
 
-  # IDP related
-  vulnerabilityCategories
-  ageCategories
-  settlerStatuses
+  # IDP/Settler related data
+  vulnerabilityCategories {
+    id
+    title
+  }
 
-  # Aid/help
-  aidSpheres
-  aidAges
+  idpAges {
+    id
+    title
+  }
+
+  idpStatuses {
+    id
+    title
+  }
+
+  # Aid related data
+  beneficiaryAges {
+    id
+    title
+  }
+
+  aidSpheres {
+    id
+    title
+    aidType
+  }
 }
