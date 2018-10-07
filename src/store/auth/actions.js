@@ -2,14 +2,15 @@ import { authenticate, verifyToken } from "@/graphql/auth";
 import { checkToken, login } from "./action-types";
 import { noop } from "@/helpers";
 
-import { setUser } from "./mutation-types";
+import { setUser, setCurrentUser } from "./mutation-types";
 
 export default {
-  [login]: ({ commit }, { loginInfo, cb = noop }) => {
-    authenticate(loginInfo, ({ user, response, err }) => {
-      cb(response, err);
-      commit(setUser, { user });
-    });
+  [login]: (_, { loginInfo, cb = noop }) => {
+    authenticate(loginInfo, ({ response, err }) => cb(response, err));
+  },
+
+  [setCurrentUser]: ({ commit }, user) => {
+    commit(setUser, user);
   },
 
   /*
