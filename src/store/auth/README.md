@@ -25,12 +25,3 @@ set-user
 ## Queries
 
 GraphQL queries a co-located under `queries` folder and is supposed to lower mental overhead required to understand authentication module.
-
-
-## Scope leak
-
-By definition authentication logic has side effects and knows about
-
-1. `localStorage`,
-2. `Router`
-3. `cookies`
