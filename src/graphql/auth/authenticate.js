@@ -1,8 +1,9 @@
 import { apolloClient } from "@/apollo";
-import { setCookies } from "@/helpers/browser";
 import { waiter } from "@/helpers/asyncHelper";
 import i18n from "@/locale";
 import tokenAuth from "./queries/login.gql";
+import { makeError } from "@/helpers/errorHandler";
+import { setupSession } from "../../helpers/browser";
 
 /**
  * Authenticate user and if credentials are valid then
@@ -16,9 +17,7 @@ import tokenAuth from "./queries/login.gql";
  */
 export default async function authenticate(payload, cb) {
   let user = {};
-  let exc = null;
 
-  const networkError = i18n.t("errorMessages.networkError");
   const [err, response] = await waiter(
     apolloClient.mutate({
       mutation: tokenAuth,
@@ -26,21 +25,13 @@ export default async function authenticate(payload, cb) {
     })
   );
 
-  if (response) {
-    const data = response.data || {};
-    const token = data.tokenAuth.token;
-    user = data.tokenAuth.user;
-
-    // Setup session for user
-    setCookies(token);
-    localStorage.setItem("token", token);
+  if (response !== null) {
+    user = setupSession(response.data || {});
   }
 
-  if (err) {
-    const errorMessage = i18n.t("login.loginError");
-    exc = new Error(err.networkError ? networkError : errorMessage);
-    exc.customMessage = true;
-  }
-
-  cb({ user, response, err: exc });
+  cb({
+    user,
+    response,
+    err: makeError(err, i18n.t("login.loginError"))
+  });
 }

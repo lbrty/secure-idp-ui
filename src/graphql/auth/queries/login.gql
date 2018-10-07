@@ -6,27 +6,6 @@ mutation TokenAuth($email: String!, $password: String!) {
       email
       firstName
       lastName
-      isConsultant
-      isSuperuser
-      isStaff
-
-      permissions {
-        canRead
-        canCreate
-        canEdit
-        canDelete
-        viewContact
-        viewPersonal
-        viewDocuments
-
-        projectInfo {
-          id
-          projectName
-        }
-      }
-      office {
-        title
-      }
     }
   }
 }

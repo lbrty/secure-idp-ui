@@ -1,8 +1,26 @@
-query Bootstrap($uid: Int!) {
+query Bootstrap {
   # Projects for current user
-  projects(uid: $uid) {
+  projects {
     id
     projectName
+
+    # Get total number of registered people
+    peopleCount
+    aidCount
+  }
+
+  currentUser {
+    id
+    email
+    firstName
+    lastName
+    isConsultant
+    isSuperuser
+    isStaff
+
+    office {
+      title
+    }
   }
 
   # IDP/Settler related data
