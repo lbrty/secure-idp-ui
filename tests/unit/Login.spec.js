@@ -21,6 +21,7 @@ describe("Login.vue", () => {
     store = new Vuex.Store({
       modules: {
         auth: {
+          namespaced: true,
           state: {},
           actions
         }
@@ -30,7 +31,12 @@ describe("Login.vue", () => {
     wrapper = mount(Login, {
       i18n,
       store,
-      localVue
+      localVue,
+      methods: {
+        onSubmit() {
+          this.login();
+        }
+      }
     });
   });
 

@@ -18,6 +18,7 @@ describe("Bootstrap.vue", () => {
 
   it("renders spinner if state is loading", () => {
     const wrapper = shallowMount(Bootstrap, { localVue });
+    wrapper.setData({ loading: true });
     expect(wrapper.find("spin-stub").exists()).toBe(true);
   });
 
