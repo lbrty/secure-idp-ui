@@ -17,12 +17,15 @@ export default {
 
   data() {
     return {
-      loading: true
+      loading: false
     };
   },
 
   methods: {
     bootstrap() {
+      if (this.loading) return;
+
+      this.loading = true;
       if (getToken()) {
         this.init(() => {
           this.loading = false;

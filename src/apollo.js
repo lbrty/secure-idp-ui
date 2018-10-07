@@ -14,11 +14,12 @@ const httpLink = new HttpLink({
 const authLink = new ApolloLink((operation, forward) => {
   // Retrieve the authorization token from local storage.
   const token = localStorage.getItem("token");
+  const authToken = token ? `JWT ${token}` : "";
 
   // Use the setContext method to set the HTTP headers.
   operation.setContext({
     headers: {
-      authorization: token ? `JWT ${token}` : ""
+      Authorization: authToken
     }
   });
 

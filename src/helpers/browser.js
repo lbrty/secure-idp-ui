@@ -69,3 +69,19 @@ export function setCookies(token) {
   document.cookie = `jwt_token=${token};domain=${DOMAIN}`;
   document.cookie = `jwt_token=${token};domain=.${DOMAIN}`;
 }
+
+/**
+ * Sets up session for user and installs cookie and saves
+ * authentication token in ``localStorage``
+ * @param {Object} data authentication information
+ * @returns {Object} user authenticated user information
+ */
+export function setupSession(data) {
+  const token = data.tokenAuth.token;
+
+  // Setup session for user
+  setCookies(token);
+  localStorage.setItem("token", token);
+
+  return data.tokenAuth.user;
+}

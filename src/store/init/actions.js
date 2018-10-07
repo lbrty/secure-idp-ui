@@ -1,7 +1,10 @@
 import { init } from "./action-types";
+import bootstrap from "@/graphql/init";
 
 export default {
-  [init]: async ({ commit }, done) => {
-    done();
+  [init]: ({ commit }, done) => {
+    bootstrap(({ response, err }) => {
+      done();
+    });
   }
 };
