@@ -2,11 +2,32 @@
   <div id="app">
     <ErrorBoundary>
       <bootstrap>
-        <router-view></router-view>
+        <div v-if="isAuthenticated">
+          <sidebar/>
+          <router-view></router-view>
+        </div>
+        <div v-else>
+          <router-view></router-view>
+        </div>
       </bootstrap>
     </ErrorBoundary>
   </div>
 </template>
+
+<script>
+import { mapGetters } from "vuex";
+
+export default {
+  name: "app",
+
+  computed: {
+    ...mapGetters({
+      isAuthenticated: "auth/isAuthenticated"
+    })
+  }
+};
+</script>
+
 
 <!-- Keep the order of imports and styles -->
 <style>
