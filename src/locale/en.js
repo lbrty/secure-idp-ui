@@ -12,6 +12,11 @@ export default {
     invalidLogin: "Please provide valid credentials"
   },
 
+  project: {
+    list: "Projects",
+    consultants: "Consultants"
+  },
+
   errorMessages: {
     common: "Something went wrong…",
     networkError: "Looks like servers are not reachable"
