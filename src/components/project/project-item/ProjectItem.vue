@@ -1,6 +1,11 @@
 <template>
   <div class="project-item" :style="bgColor">
-    <h2 class="project-item__title">{{ project.projectName }}</h2>
+    <h2 class="project-item__title">
+      <router-link :to="{ name: 'project-detail', params: { projectId: project.id }}">
+        {{ project.projectName }}
+      </router-link>
+    </h2>
+
     <div class="project-item__controls"></div>
   </div>
 </template>

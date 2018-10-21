@@ -16,6 +16,13 @@ const router = new Router({
     },
 
     {
+      path: "/p/:projectId",
+      name: "project-detail",
+      component: () => import(/* webpackChunkName: "project-detail" */ "@/views/ProjectDetail.vue"),
+      props: true
+    },
+
+    {
       path: "/login",
       name: "login",
       component: () => import(/* webpackChunkName: "login" */ "@/views/Login.vue")
