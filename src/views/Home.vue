@@ -1,10 +1,11 @@
 <template>
   <div class="home">
     <project-list v-if="projects.length" :projects="projects"/>
+
     <Alert v-else show-icon>
-        {{ $t("project.noProjects") }}
-        <Icon type="ios-bulb-outline" slot="icon"></Icon>
-        <template slot="desc">{{ $t("project.createProjectInfo") }}</template>
+      {{ $t("project.noProjects") }}
+      <Icon type="ios-bulb-outline" slot="icon"></Icon>
+      <template slot="desc">{{ $t("project.createProjectInfo") }}</template>
     </Alert>
   </div>
 </template>
