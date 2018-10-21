@@ -1,10 +1,12 @@
 <template>
-  <div id="app">
+  <div id="app" class="app">
     <ErrorBoundary>
       <bootstrap>
         <div v-if="isAuthenticated">
           <sidebar/>
-          <router-view></router-view>
+          <main class="app__content">
+            <router-view></router-view>
+          </main>
         </div>
         <div v-else>
           <router-view></router-view>
