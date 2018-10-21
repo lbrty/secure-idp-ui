@@ -1,0 +1,39 @@
+<template>
+  <div class="project-item" :style="bgColor">
+    <h2 class="project-item__title">{{ project.projectName }}</h2>
+    <div class="project-item__controls"></div>
+  </div>
+</template>
+
+<script>
+import { colorFromText } from "@/helpers/color";
+
+export default {
+  name: "ProjectItem",
+
+  props: {
+    project: Object
+  },
+
+  computed: {
+    bgColor() {
+      let toColor = `
+        ${this.project.projectName},
+        ${this.project.description},
+        ${this.project.id},
+        ${this.project.peopleCount},
+        ${this.project.aidCount}.
+      `;
+
+      return `
+        background: ${colorFromText(toColor, 300)};
+        border: 1px solid ${colorFromText(toColor, 200)}
+      `;
+    }
+  }
+};
+</script>
+
+<style lang="sass">
+@import "./project-item.sass"
+</style>
