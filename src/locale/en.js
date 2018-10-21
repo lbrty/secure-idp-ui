@@ -17,6 +17,11 @@ export default {
     consultants: "Consultants"
   },
 
+  system: {
+    settings: "Settings",
+    logout: "Log out"
+  },
+
   errorMessages: {
     common: "Something went wrong…",
     networkError: "Looks like servers are not reachable"
