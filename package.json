@@ -49,17 +49,6 @@
     "vue-jest": "^3.0.0",
     "vue-template-compiler": "^2.5.17"
   },
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "vue"
-    ],
-    "transform": {
-      "^.+\\.js$": "babel-jest",
-      "^.+\\.vue$": "vue-jest"
-    }
-  },
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
