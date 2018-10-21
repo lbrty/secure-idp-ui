@@ -16,7 +16,8 @@ describe("Sidebar.vue", () => {
           namespaced: true,
           state: {},
           getters: {
-            isAdmin: _ => true
+            isAdmin: _ => true,
+            isAuthenticated: _ => true
           }
         }
       }
@@ -30,7 +31,9 @@ describe("Sidebar.vue", () => {
     });
 
     expect(wrapper.find(".sidebar__menu").exists()).toBe(true);
-    expect(wrapper.findAll(".sidebar__menu__item").length).toBe(2);
+    expect(wrapper.find(".sidebar__bottom").exists()).toBe(true);
+    expect(wrapper.findAll(".sidebar__bottom__item").length).toEqual(2);
+    expect(wrapper.findAll(".sidebar__menu__item").length).toEqual(2);
   });
 
   it("hides menu items if user is not admin", () => {
@@ -40,7 +43,8 @@ describe("Sidebar.vue", () => {
           namespaced: true,
           state: {},
           getters: {
-            isAdmin: _ => false
+            isAdmin: _ => false,
+            isAuthenticated: _ => false
           }
         }
       }
@@ -54,6 +58,7 @@ describe("Sidebar.vue", () => {
     });
 
     expect(wrapper.find(".sidebar__menu").exists()).toBe(true);
-    expect(wrapper.findAll(".sidebar__menu__item").length).toBe(1);
+    expect(wrapper.find(".sidebar__bottom").exists()).toBe(false);
+    expect(wrapper.findAll(".sidebar__menu__item").length).toEqual(1);
   });
 });
