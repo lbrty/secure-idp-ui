@@ -3,6 +3,7 @@ query Bootstrap {
   projects {
     id
     projectName
+    description
 
     # Get total number of registered people
     peopleCount
