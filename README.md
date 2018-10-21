@@ -1,5 +1,7 @@
 # secure-idp
 
+[![Build Status](https://travis-ci.com/lbrty/secure-idp-ui.svg?branch=develop)](https://travis-ci.com/lbrty/secure-idp-ui)
+
 ## Project setup
 ```
 npm install
