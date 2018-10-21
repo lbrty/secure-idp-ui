@@ -1,8 +1,8 @@
 # secure-idp
 
 [![Build Status](https://travis-ci.com/lbrty/secure-idp-ui.svg?branch=develop)](https://travis-ci.com/lbrty/secure-idp-ui)
+[![Coverage Status](https://coveralls.io/repos/github/lbrty/secure-idp-ui/badge.svg?branch=develop)](https://coveralls.io/github/lbrty/secure-idp-ui?branch=develop)
 [![Vulnerabilities](https://snyk.io/test/github/lbrty/secure-idp-ui/badge.svg?targetFile=package.json)](https://snyk.io/test/github/lbrty/secure-idp-ui?targetFile=package.json)
-
 
 ## Project setup
 ```
