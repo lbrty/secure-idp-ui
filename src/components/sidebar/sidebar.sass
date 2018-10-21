@@ -4,8 +4,11 @@
   left: 0
   bottom: 0
   width: 6em
+  display: flex
+  flex-direction: column
   background: #fff
   border-right: 1px solid #eee
+  padding-bottom: 1em
   z-index: 10
 
   &__logo
@@ -17,7 +20,8 @@
 
   &__menu
     width: 3em
-    height: 76vh
+    align-self: flex-start
+    flex-grow: 1
     margin: 0 auto
 
     &__item
@@ -35,7 +39,9 @@
 
   &__bottom
     width: 3em
-    margin: 0 auto
+    align-self: flex-end
+    flex-shrink: 0
+    margin: -1em auto 0 auto
 
     &__item
       display: block
