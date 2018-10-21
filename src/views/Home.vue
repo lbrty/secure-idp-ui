@@ -1,11 +1,16 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <project-list/>
   </div>
 </template>
 
 <script>
+import ProjectList from "@/components/project/ProjectList.vue";
+
 export default {
-  name: "home"
+  name: "home",
+  components: {
+    ProjectList
+  }
 };
 </script>
