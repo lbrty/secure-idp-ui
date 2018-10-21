@@ -2,7 +2,7 @@ import { mount, createLocalVue } from "@vue/test-utils";
 import Vuex from "vuex";
 
 import i18n from "@/locale";
-import ProjectItem from "@/components/project/ProjectItem.vue";
+import ProjectItem from "@/components/project/project-item/ProjectItem.vue";
 
 const localVue = createLocalVue();
 
