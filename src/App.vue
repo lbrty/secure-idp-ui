@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import { APP_TITLE } from "@/config";
 import { mapGetters } from "vuex";
 
 export default {
@@ -26,6 +27,10 @@ export default {
     ...mapGetters({
       isAuthenticated: "auth/isAuthenticated"
     })
+  },
+
+  created() {
+    document.title = APP_TITLE;
   }
 };
 </script>
