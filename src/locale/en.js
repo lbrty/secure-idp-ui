@@ -18,6 +18,7 @@ export default {
 
   project: {
     create: "Add project",
+    created: "Project successfully created",
     list: "Projects",
     consultants: "Consultants",
     noProjects: "No projects found.",
@@ -25,12 +26,15 @@ export default {
     total: "people",
     edit: "Edit project",
     delete: "Delete project",
-    pulse: "Reports"
+    pulse: "Reports",
+    shortDescription: "Short description",
+    projectName: "Project name"
   },
 
   system: {
     settings: "Settings",
-    logout: "Log out"
+    logout: "Log out",
+    cancel: "Cancel"
   },
 
   errorMessages: {
