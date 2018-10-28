@@ -9,3 +9,6 @@ export const MAX_FILE_SIZE = 20971520;
 // API related base urls
 export const DOMAIN = process.env.VUE_APP_DOMAIN;
 export const API_URL = process.env.VUE_APP_API_URL;
+
+// Misc
+export const APP_TITLE = process.env.VUE_APP_TITLE || "IDP";
