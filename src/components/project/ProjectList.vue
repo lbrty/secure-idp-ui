@@ -1,5 +1,7 @@
 <template>
   <div class="project-list">
+    <project-form/>
+
     <project-item
       v-for="p in projects"
       :project="p"
@@ -9,6 +11,7 @@
 
 <script>
 import ProjectItem from "./project-item/ProjectItem.vue";
+import ProjectForm from "./project-form/ProjectForm.vue";
 
 export default {
   name: "ProjectList",
@@ -17,7 +20,8 @@ export default {
   },
 
   components: {
-    ProjectItem
+    ProjectItem,
+    ProjectForm
   }
 };
 </script>
