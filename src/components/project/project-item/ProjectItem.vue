@@ -11,8 +11,14 @@
     </div>
 
     <div class="project-item__controls">
-      <span :data-balloon="$t('project.edit')" data-balloon-pos="up" class="project-item__controls__icon">
+      <span
+        :data-balloon="$t('project.edit')"
+        data-balloon-pos="up"
+        class="project-item__controls__icon"
+        @click="toggleEditMode">
+
         <Icon type="md-create" />
+
       </span>
 
       <span :data-balloon="$t('project.edit')" data-balloon-pos="up" class="project-item__controls__icon">
@@ -38,6 +44,18 @@ export default {
 
   props: {
     project: Object
+  },
+
+  data() {
+    return {
+      editMode: false
+    };
+  },
+
+  methods: {
+    toggleEditMode() {
+      this.editMode = !this.editMode;
+    }
   },
 
   computed: {
