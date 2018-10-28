@@ -1,4 +1,8 @@
 export default {
+  pages: {
+    projects: "Projects"
+  },
+
   login: {
     email: "Email",
     password: "Password",

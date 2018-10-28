@@ -51,7 +51,7 @@ export default {
       `;
 
       return `
-        background: ${colorFromText(toColor, 300)};
+        background: ${colorFromText(toColor, 200)};
         border: 1px solid ${colorFromText(toColor, 200)}
       `;
     }
