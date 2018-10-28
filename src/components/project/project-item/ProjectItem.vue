@@ -6,6 +6,10 @@
       </router-link>
     </h2>
 
+    <div class="project-item__description">
+      {{ project.description }}
+    </div>
+
     <div class="project-item__controls">
       <span :data-balloon="$t('project.edit')" data-balloon-pos="up" class="project-item__controls__icon">
         <Icon type="md-create" />
