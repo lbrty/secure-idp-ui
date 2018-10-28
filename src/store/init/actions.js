@@ -2,6 +2,7 @@ import { init } from "./action-types";
 import { setProjects } from "@/store/projects/action-types";
 import { setCurrentUser } from "@/store/auth/mutation-types";
 import bootstrap from "@/graphql/init";
+import { showBanner } from "@/helpers/browser";
 
 export default {
   [init]: ({ dispatch }, done) => {
@@ -12,7 +13,7 @@ export default {
         dispatch(`auth/${setCurrentUser}`, currentUser, { root: true });
       }
 
-      console.info("Bootstrapped…");
+      showBanner();
       done();
     });
   }

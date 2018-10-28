@@ -1,8 +1,9 @@
 export default {
   user: state => state.user,
+  token: state => state.token,
 
-  isAuthenticated: ({ user }) => {
-    return user !== null || localStorage.getItem("token") !== null;
+  isAuthenticated: ({ user, token }) => {
+    return user !== null || token !== null;
   },
 
   isAdmin({ user }) {

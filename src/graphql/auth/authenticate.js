@@ -3,7 +3,7 @@ import { waiter } from "@/helpers/asyncHelper";
 import i18n from "@/locale";
 import tokenAuth from "./queries/login.gql";
 import { makeError } from "@/helpers/errorHandler";
-import { setupSession } from "../../helpers/browser";
+import { setupSession } from "@/helpers/browser";
 
 /**
  * Authenticate user and if credentials are valid then
@@ -16,7 +16,7 @@ import { setupSession } from "../../helpers/browser";
  * @param {Function} cb callback function
  */
 export default async function authenticate(payload, cb) {
-  let user = {};
+  let authData = {};
 
   const [err, response] = await waiter(
     apolloClient.mutate({
@@ -26,11 +26,11 @@ export default async function authenticate(payload, cb) {
   );
 
   if (response !== null) {
-    user = setupSession(response.data || {});
+    authData = setupSession(response.data || {});
   }
 
   cb({
-    user,
+    authData,
     response,
     err: makeError(err, i18n.t("login.loginError"))
   });
