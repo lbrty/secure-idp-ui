@@ -17,6 +17,7 @@ export default {
   },
 
   project: {
+    create: "Add project",
     list: "Projects",
     consultants: "Consultants",
     noProjects: "No projects found.",
