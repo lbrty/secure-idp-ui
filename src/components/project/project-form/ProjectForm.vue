@@ -80,6 +80,8 @@ export default {
             this.newProject = {};
             this.showForm = false;
             this.$Message.success(this.$t("project.created"));
+          } else {
+            this.$Message.error(err);
           }
         }
       });
