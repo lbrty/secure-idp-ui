@@ -6,12 +6,13 @@ import bootstrap from "@/graphql/init";
 export default {
   [init]: ({ dispatch }, done) => {
     bootstrap(({ response: { data }, err }) => {
-      if (!err) {
+      if (!err && data) {
         const { projects, currentUser } = data;
         dispatch(`projects/${setProjects}`, projects, { root: true });
         dispatch(`auth/${setCurrentUser}`, currentUser, { root: true });
       }
 
+      console.info("Bootstrapped…");
       done();
     });
   }
