@@ -74,7 +74,7 @@ export function setCookies(token) {
  * Sets up session for user and installs cookie and saves
  * authentication token in ``localStorage``
  * @param {Object} data authentication information
- * @returns {Object} user authenticated user information
+ * @returns {Object} authenticated user information
  */
 export function setupSession(data) {
   const token = data.tokenAuth.token;
@@ -83,5 +83,27 @@ export function setupSession(data) {
   setCookies(token);
   localStorage.setItem("token", token);
 
-  return data.tokenAuth.user;
+  return data.tokenAuth;
 }
+
+export const showBanner = () => {
+  var VERSION = window.VERSION || "";
+
+  console.info(
+    `%cIDP %cVersion ${VERSION}`,
+    `
+      background:#35495e;
+      border-radius: 0.2em 0 0 0.2em;
+      padding: 0.2em 0 0.1em 0.5em;
+      text-align: center;
+      color: white;
+    `,
+
+    `
+      background: #31ba7f;
+      border-radius: 0 0.2em 0.2em 0;
+      color: white;
+      padding: 0.2em 0.3em 0.1em 0.2em;
+    `
+  );
+};
