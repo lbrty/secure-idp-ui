@@ -1,0 +1,11 @@
+mutation CreateProject($projectName: String!, $description: String!) {
+  createProject(projectName: $projectName, description: $description) {
+    id
+    projectName
+    description
+
+    # Get total number of registered people
+    peopleCount
+    aidCount
+  }
+}
