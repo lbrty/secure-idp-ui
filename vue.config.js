@@ -18,5 +18,14 @@ module.exports = {
       .use("graphql-tag/loader")
       .loader("graphql-tag/loader")
       .end();
+
+    config.plugin("define").tap(args => {
+      args[0] = {
+        VERSION: JSON.stringify(require("./package.json").version),
+        ...args[0]
+      };
+
+      return args;
+    });
   }
 };
