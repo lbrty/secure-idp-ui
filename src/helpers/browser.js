@@ -87,10 +87,10 @@ export function setupSession(data) {
 }
 
 export const showBanner = () => {
-  var VERSION = window.VERSION || "";
+  const vsn = VERSION || " ";
 
   console.info(
-    `%cIDP %cVersion ${VERSION}`,
+    `%cIDP %cVersion ${vsn}`,
     `
       background:#35495e;
       border-radius: 0.2em 0 0 0.2em;
@@ -103,7 +103,7 @@ export const showBanner = () => {
       background: #31ba7f;
       border-radius: 0 0.2em 0.2em 0;
       color: white;
-      padding: 0.2em 0.3em 0.1em 0.2em;
+      padding: 0.2em 0.5em 0.1em 0.5em;
     `
   );
 };
