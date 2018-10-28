@@ -6,7 +6,23 @@
       </router-link>
     </h2>
 
-    <div class="project-item__controls"></div>
+    <div class="project-item__controls">
+      <span :data-balloon="$t('project.edit')" data-balloon-pos="up" class="project-item__controls__icon">
+        <Icon type="md-create" />
+      </span>
+
+      <span :data-balloon="$t('project.edit')" data-balloon-pos="up" class="project-item__controls__icon">
+        <Icon type="md-trash" />
+      </span>
+
+      <span :data-balloon="$t('project.pulse')" data-balloon-pos="up" class="project-item__controls__icon">
+        <Icon type="md-pulse" />
+      </span>
+    </div>
+
+    <div class="project-item__stats">
+      {{ $t("project.total") }} {{ project.peopleCount }}
+    </div>
   </div>
 </template>
 
