@@ -16,7 +16,11 @@ export default {
     list: "Projects",
     consultants: "Consultants",
     noProjects: "No projects found.",
-    createProjectInfo: "Start your first project."
+    createProjectInfo: "Start your first project.",
+    total: "people",
+    edit: "Edit project",
+    delete: "Delete project",
+    pulse: "Reports"
   },
 
   system: {
