@@ -6,15 +6,15 @@ import { showBanner } from "@/helpers/browser";
 
 export default {
   [init]: ({ dispatch }, done) => {
-    bootstrap(({ response: { data }, err }) => {
-      if (!err && data) {
-        const { projects, currentUser } = data;
+    bootstrap(({ response, error }) => {
+      if (Object.hasOwnProperty(response, "data") && !error) {
+        const { projects, currentUser } = response.data;
         dispatch(`projects/${setProjects}`, projects, { root: true });
         dispatch(`auth/${setCurrentUser}`, currentUser, { root: true });
       }
 
       showBanner();
-      done();
+      done(error);
     });
   }
 };

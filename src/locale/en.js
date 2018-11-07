@@ -13,7 +13,8 @@ export default {
     emailRequired: "E-mail is required",
     enterValidEmail: "Please enter valid E-mail address",
     loginError: "Invalid credentials",
-    invalidLogin: "Please provide valid credentials"
+    invalidLogin: "Please provide valid credentials",
+    loginRequired: "Your session has expired please login again"
   },
 
   project: {

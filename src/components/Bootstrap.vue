@@ -27,8 +27,11 @@ export default {
 
       this.loading = true;
       if (getToken()) {
-        this.init(() => {
+        this.init(err => {
           this.loading = false;
+          if (err.message) {
+            this.$Message.error(err.message);
+          }
         });
       } else {
         this.loading = false;

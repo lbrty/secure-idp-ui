@@ -13,6 +13,7 @@ export default async function bootstrap(cb) {
 
   cb({
     response,
-    err: makeError(err, i18n.t("errorMessages.common"))
+    error: makeError(err, i18n.t("errorMessages.common")),
+    errorInfo: err
   });
 }
