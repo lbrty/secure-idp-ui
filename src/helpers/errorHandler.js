@@ -19,8 +19,14 @@ export const makeError = (err, msg) => {
     }
 
     let exc = new Error(message);
+
     exc.customMessage = true;
+
+    // We need to keep original error
+    // so later we can access and process
+    // if we will need it.
     exc.error = err;
+
     return exc;
   }
 
