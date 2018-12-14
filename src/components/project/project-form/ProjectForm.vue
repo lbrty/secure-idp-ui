@@ -140,7 +140,6 @@ export default {
 };
 </script>
 
-
 <style lang="sass">
 @import "./project-form.sass"
 </style>
