@@ -29,7 +29,13 @@ export default {
     delete: "Delete project",
     pulse: "Reports",
     shortDescription: "Short description",
-    projectName: "Project name"
+    projectName: "Project name",
+    validations: {
+      projectName: "Please enter project name",
+      projectNameRequired: "Project name is required",
+      descriptionRequired: "Project description required",
+      descriptionMaxLen: "Description has limit of 1000 letters"
+    }
   },
 
   system: {
