@@ -1,23 +1,23 @@
 <template>
   <div class="project-form">
-    <Form v-if="showForm" class="project-form__form" @submit="onSubmit">
-      <FormItem class="project-form__form__item">
+    <Form v-if="showForm" class="project-form__form" ref="validateProject" :rules="ruleValidate" @submit="onSubmit">
+      <FormItem class="project-form__form__item" prop="projectName" :error="errors.projectName">
         <Input
           size="large"
           :placeholder="$t('project.projectName')"
           v-model="newProject.projectName"/>
       </FormItem>
 
-      <FormItem class="project-form__form__item">
+      <FormItem class="project-form__form__item" prop="description" :error="errors.description">
         <Input
           type="textarea"
-          :rows="6"
+          :rows="4"
           :placeholder="$t('project.shortDescription')"
           v-model="newProject.description"
           class="project-form__form__item__description"/>
       </FormItem>
 
-      <Row>
+      <Row class="project-form__form__controls">
         <i-col span="12" style="text-align: left; padding-left: 0.5em; padding-top: 0.5em">
           <button type="text" class="project-form__form__cancel" @click.prevent="toggleForm">
             {{ $t("system.cancel") }}
@@ -43,6 +43,8 @@
 <script>
 import { mapActions } from "vuex";
 import { createProject } from "@/store/projects/action-types";
+import transformErrors from "@/helpers/formErrors";
+import validationRules from "./validations";
 
 const EMPTY_PROJECT = {
   projectName: "",
@@ -63,26 +65,38 @@ export default {
     return {
       loading: false,
       showForm: false,
-      newProject: this.project || EMPTY_PROJECT
+      errors: [],
+      newProject: this.project || EMPTY_PROJECT,
+      ruleValidate: validationRules
     };
   },
 
   methods: {
-    onSubmit() {
-      this.loading = true;
+    onSubmit(name) {
+      this.$refs.validateProject.validate(valid => {
+        if (valid) {
+          this.loading = true;
+          this.createProject({
+            projectInfo: this.newProject,
+            cb: (result, response, err) => {
+              this.loading = false;
+              const errors = err || result.createProject.errors;
 
-      this.createProject({
-        projectInfo: this.newProject,
-        cb: (result, response, err) => {
-          this.loading = false;
-
-          if (!err) {
-            this.newProject = {};
-            this.showForm = false;
-            this.$Message.success(this.$t("project.created"));
-          } else {
-            this.$Message.error(err);
-          }
+              if (!errors || !errors.length) {
+                this.newProject = {};
+                this.showForm = false;
+                this.$Message.success(this.$t("project.created"));
+              } else {
+                if (Object.keys(errors).length > 0) {
+                  this.errors = transformErrors(errors);
+                } else {
+                  this.$Message.error({
+                    content: err
+                  });
+                }
+              }
+            }
+          });
         }
       });
     },
