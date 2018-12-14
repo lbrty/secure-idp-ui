@@ -29,7 +29,7 @@ export default {
       if (getToken()) {
         this.init(err => {
           this.loading = false;
-          if (err.message) {
+          if (err && err.message) {
             this.$Message.error(err.message);
           }
         });
@@ -50,25 +50,6 @@ export default {
 };
 </script>
 
-<style lang="sass" scoped>
-.bootstrap
-  background: #4e5158
-
-  &__spin-icon
-    color: #fff
-    animation: spin 1s linear infinite
-
-.loading-text
-  color: #fff
-  font-size: 1.22em
-  font-weight: 400
-  margin-left: 1em
-
-@keyframes spin
-  from
-    transform: rotate(0deg)
-  50%
-    transform: rotate(180deg)
-  to
-    transform: rotate(360deg)
+<style lang="sass">
+@import "./bootstrap.sass"
 </style>
