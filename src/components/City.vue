@@ -1110,7 +1110,8 @@ export default {};
   fill: url(#linear-gradient-6);
 }
 
-.cls-128, .cls-8 {
+.cls-128,
+.cls-8 {
   fill: #f2f2f2;
 }
 
@@ -1162,7 +1163,10 @@ export default {};
   fill: url(#linear-gradient-12);
 }
 
-.cls-21, .cls-63, .cls-66, .cls-76 {
+.cls-21,
+.cls-63,
+.cls-66,
+.cls-76 {
   fill: #fff;
 }
 
@@ -1378,15 +1382,21 @@ export default {};
   fill: url(#linear-gradient-59);
 }
 
-.cls-115, .cls-116, .cls-118, .cls-75 {
+.cls-115,
+.cls-116,
+.cls-118,
+.cls-75 {
   fill: none;
 }
 
-.cls-118, .cls-75 {
+.cls-118,
+.cls-75 {
   stroke: #ddd;
 }
 
-.cls-116, .cls-118, .cls-75 {
+.cls-116,
+.cls-118,
+.cls-75 {
   stroke-miterlimit: 10;
 }
 
@@ -1395,7 +1405,8 @@ export default {};
   opacity: 0.6;
 }
 
-.cls-128, .cls-76 {
+.cls-128,
+.cls-76 {
   opacity: 0.15;
 }
 
@@ -1419,7 +1430,9 @@ export default {};
   fill: #009145;
 }
 
-.cls-107, .cls-82, .cls-87 {
+.cls-107,
+.cls-82,
+.cls-87 {
   opacity: 0.69;
 }
 
@@ -1555,7 +1568,8 @@ export default {};
   fill: #2d2d2d;
 }
 
-.cls-115, .cls-116 {
+.cls-115,
+.cls-116 {
   stroke: #ebf4f8;
   stroke-linecap: round;
   stroke-width: 0.96px;
