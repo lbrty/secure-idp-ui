@@ -9,7 +9,7 @@ export default {
     },
 
     {
-      message: i18n.t("project.validations.nameRequired"),
+      message: i18n.t("project.validations.projectNameRequired"),
       trigger: "blur"
     }
   ],
@@ -18,11 +18,6 @@ export default {
     {
       required: true,
       message: i18n.t("project.validations.descriptionRequired"),
-      trigger: "blur"
-    },
-
-    {
-      message: i18n.t("project.validations.enterDescription"),
       trigger: "blur"
     },
 
