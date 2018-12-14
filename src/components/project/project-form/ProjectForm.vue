@@ -67,6 +67,20 @@ const EMPTY_PROJECT = {
   description: ""
 };
 
+const mayBeGetErrors = (response, err, hasPrimitiveError) => {
+  const errors = err || response.createProject.errors;
+
+  if (Object.keys(errors).length > 0) {
+    return transformErrors(errors);
+  }
+
+  if (hasPrimitiveError) {
+    hasPrimitiveError(errors);
+  }
+
+  return {};
+};
+
 export default {
   name: "ProjectForm",
 
@@ -81,7 +95,7 @@ export default {
     return {
       loading: false,
       showForm: false,
-      errors: [],
+      errors: {},
       newProject: this.project || EMPTY_PROJECT,
       ruleValidate: validationRules
     };
@@ -90,31 +104,29 @@ export default {
   methods: {
     onSubmit(name) {
       this.$refs.validateProject.validate(valid => {
-        if (valid) {
-          this.loading = true;
-          this.createProject({
-            projectInfo: this.newProject,
-            cb: (result, response, err) => {
-              this.loading = false;
-              const errors = err || result.createProject.errors;
+        if (!valid) return;
 
-              if (!errors || !errors.length) {
-                this.newProject = {};
-                this.showForm = false;
-                this.$Message.success(this.$t("project.created"));
-              } else {
-                if (Object.keys(errors).length > 0) {
-                  this.errors = transformErrors(errors);
-                } else {
-                  this.$Message.error({
-                    content: err
-                  });
-                }
-              }
+        this.loading = true;
+        this.createProject({
+          projectInfo: this.newProject,
+          cb: (result, response, err) => {
+            this.loading = false;
+            const errors = err || result.createProject.errors;
+
+            if (!errors || !errors.length) {
+              this.showSuccess();
+            } else {
+              this.errors = mayBeGetErrors(result, err, error => this.$Message.error({ content: error }));
             }
-          });
-        }
+          }
+        });
       });
+    },
+
+    showSuccess() {
+      this.newProject = {};
+      this.showForm = false;
+      this.$Message.success(this.$t("project.created"));
     },
 
     toggleForm() {
