@@ -7,7 +7,7 @@ export default {
     newProject(projectInfo, ({ result, response, err }) => {
       cb(result, response, err);
 
-      if (!err) {
+      if (!err && result.createProject.errors.length == 0) {
         commit(addProject, result.createProject);
       }
     });
