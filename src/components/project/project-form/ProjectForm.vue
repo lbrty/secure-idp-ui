@@ -1,11 +1,18 @@
 <template>
   <div class="project-form">
-    <Form v-if="showForm" class="project-form__form" ref="validateProject" :rules="ruleValidate" @submit="onSubmit">
+    <Form
+      v-if="showForm"
+      class="project-form__form"
+      ref="validateProject"
+      :rules="ruleValidate"
+      @submit="onSubmit"
+    >
       <FormItem class="project-form__form__item" prop="projectName" :error="errors.projectName">
         <Input
           size="large"
           :placeholder="$t('project.projectName')"
-          v-model="newProject.projectName"/>
+          v-model="newProject.projectName"
+        />
       </FormItem>
 
       <FormItem class="project-form__form__item" prop="description" :error="errors.description">
@@ -14,27 +21,36 @@
           :rows="4"
           :placeholder="$t('project.shortDescription')"
           v-model="newProject.description"
-          class="project-form__form__item__description"/>
+          class="project-form__form__item__description"
+        />
       </FormItem>
 
       <Row class="project-form__form__controls">
         <i-col span="12" style="text-align: left; padding-left: 0.5em; padding-top: 0.5em">
-          <button type="text" class="project-form__form__cancel" @click.prevent="toggleForm">
-            {{ $t("system.cancel") }}
-          </button>
+          <button
+            type="text"
+            class="project-form__form__cancel"
+            @click.prevent="toggleForm"
+          >{{ $t("system.cancel") }}</button>
         </i-col>
 
         <i-col span="12" style="text-align: right">
-          <Button type="primary" style="width: 100px;" @click.prevent="onSubmit">
-            {{ $t("project.create") }}
-            </Button>
+          <Button
+            type="primary"
+            style="width: 100px;"
+            @click.prevent="onSubmit"
+          >{{ $t("project.create") }}</Button>
         </i-col>
       </Row>
     </Form>
 
-    <Button v-else size="large" type="dashed" class="project-form__create" @click.prevent="toggleForm">
-      {{ $t("project.create") }} +
-    </Button>
+    <Button
+      v-else
+      size="large"
+      type="dashed"
+      class="project-form__create"
+      @click.prevent="toggleForm"
+    >{{ $t("project.create") }} +</Button>
 
     <Spin size="large" fix v-if="loading"></Spin>
   </div>
