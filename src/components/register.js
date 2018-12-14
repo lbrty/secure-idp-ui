@@ -1,5 +1,5 @@
 import Vue from "vue";
-import Bootstrap from "./Bootstrap.vue";
+import Bootstrap from "./bootstrap/Bootstrap.vue";
 import ErrorBoundary from "./ErrorBoundary";
 import Sidebar from "./sidebar/Sidebar.vue";
 
