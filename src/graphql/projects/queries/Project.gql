@@ -1,0 +1,16 @@
+#import "@/graphql/fieldError.gql"
+
+type Project {
+  id: ID!
+
+  projectName: String!
+  description: String
+  createdAt: String
+
+  # Computed properties
+  peopleCount: Int
+  aidCount: Int
+
+  # Validation errors
+  errors: [FieldError]
+}
