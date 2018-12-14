@@ -8,14 +8,10 @@
       @submit.native.prevent="onSubmit"
       :model="loginInfo"
       :rules="rules"
-      class="login__form">
-
+      class="login__form"
+    >
       <FormItem prop="email">
-        <Input
-          :placeholder="$t('login.email')"
-          type="text"
-          size="large"
-          v-model="loginInfo.email"/>
+        <Input :placeholder="$t('login.email')" type="text" size="large" v-model="loginInfo.email"/>
       </FormItem>
 
       <FormItem prop="password">
@@ -23,31 +19,21 @@
           :placeholder="$t('login.password')"
           type="password"
           size="large"
-          v-model="loginInfo.password"/>
+          v-model="loginInfo.password"
+        />
       </FormItem>
 
-      <FormItem
-        v-if="showCodeInput"
-        prop="code">
-
-        <Input
-          :placeholder="$t('login.code')"
-          type="text"
-          size="large"
-          v-model="loginInfo.code"/>
-
+      <FormItem v-if="showCodeInput" prop="code">
+        <Input :placeholder="$t('login.code')" type="text" size="large" v-model="loginInfo.code"/>
       </FormItem>
 
       <Button
         type="primary"
         html-type="submit"
         size="large"
-        class="login__form__submit">
-
-        {{ $t('login.logIn') }}
-
-      </Button>
-    </form>
+        class="login__form__submit"
+      >{{ $t('login.logIn') }}</Button>
+    </Form>
   </div>
 </template>
 

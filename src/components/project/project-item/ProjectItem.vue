@@ -1,38 +1,41 @@
 <template>
   <div class="project-item" :style="bgColor">
     <h2 class="project-item__title">
-      <router-link :to="{ name: 'project-detail', params: { projectId: project.id }}">
-        {{ project.projectName || '???' }}
-      </router-link>
+      <router-link
+        :to="{ name: 'project-detail', params: { projectId: project.id }}"
+      >{{ project.projectName || '???' }}</router-link>
     </h2>
 
-    <div class="project-item__description">
-      {{ project.description }}
-    </div>
+    <div class="project-item__description">{{ project.description }}</div>
 
     <div class="project-item__controls">
       <span
         :data-balloon="$t('project.edit')"
         data-balloon-pos="up"
         class="project-item__controls__icon"
-        @click="toggleEditMode">
-
-        <Icon type="md-create" />
-
+        @click="toggleEditMode"
+      >
+        <Icon type="md-create"/>
       </span>
-
-      <span :data-balloon="$t('project.edit')" data-balloon-pos="up" class="project-item__controls__icon">
-        <Icon type="md-trash" />
+      
+      <span
+        :data-balloon="$t('project.edit')"
+        data-balloon-pos="up"
+        class="project-item__controls__icon"
+      >
+        <Icon type="md-trash"/>
       </span>
-
-      <span :data-balloon="$t('project.pulse')" data-balloon-pos="up" class="project-item__controls__icon">
-        <Icon type="md-pulse" />
+      
+      <span
+        :data-balloon="$t('project.pulse')"
+        data-balloon-pos="up"
+        class="project-item__controls__icon"
+      >
+        <Icon type="md-pulse"/>
       </span>
     </div>
 
-    <div class="project-item__stats">
-      {{ $t("project.total") }} {{ project.peopleCount }}
-    </div>
+    <div class="project-item__stats">{{ $t("project.total") }} {{ project.peopleCount }}</div>
   </div>
 </template>
 

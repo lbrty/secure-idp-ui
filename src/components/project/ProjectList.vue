@@ -2,10 +2,7 @@
   <div class="project-list">
     <project-form/>
 
-    <project-item
-      v-for="p in projects"
-      :project="p"
-      :key="p.id"/>
+    <project-item v-for="p in projects" :project="p" :key="p.id"/>
   </div>
 </template>
 
