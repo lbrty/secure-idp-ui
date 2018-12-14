@@ -5,7 +5,6 @@ import createProjectMutation from "./queries/createProject.gql";
 import { makeError } from "@/helpers/errorHandler";
 
 export default async function createProject(payload, cb) {
-  console.log("Create", payload);
   const [err, response] = await waiter(
     apolloClient.mutate({
       mutation: createProjectMutation,
@@ -14,7 +13,7 @@ export default async function createProject(payload, cb) {
   );
 
   cb({
-    result: response.data,
+    result: (response || {}).data,
     response,
     err: makeError(err, i18n.t("errorMessages.common"))
   });
