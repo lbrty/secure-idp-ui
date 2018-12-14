@@ -7,14 +7,15 @@ export const handleError = (err, vm, info) => {
 export const makeError = (err, msg) => {
   const networkError = i18n.t("errorMessages.networkError");
 
-  if (typeof err === "object") {
+  if (err && err !== null) {
     let message = msg;
+    const statusCode = err.networkError.statusCode;
 
-    if (err.networkError.statusCode === 401) {
+    if (statusCode === 401) {
       message = i18n.t("login.loginRequired");
     }
 
-    if (err.networkError.statusCode >= 500) {
+    if (statusCode >= 500) {
       message = networkError;
     }
 
